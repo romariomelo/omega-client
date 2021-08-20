@@ -11,9 +11,10 @@ function ProposalBox(props){
             <ProposalElement content={"Submercado: " + props.submercado} />
             <ProposalElement content={"Valor: R$" + props.valor} />
             <ProposalElement content={"ID: " + props.id} />
-            <SmallButton content={'Editar'} bgColor={'bg-yellow-600'} />
+            <div className="justify-self-end flex">
             <SmallButton content={'Contratar'} bgColor={'bg-green-600'} />
             <SmallButton content={'Deletar'} bgColor={'bg-red-600'} />
+            </div>
         </div>
     )
 }
