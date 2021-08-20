@@ -1,12 +1,11 @@
-import { Component } from "react"
-import Input from "../../components/input"
-import SolarEnergyImage from "../../assets/solar-energy-image.svg"
+import Input from "../components/input"
+import SolarEnergyImage from "../assets/solar-energy-image.svg"
+import Button from "../components/button"
+import SignUp from "../functions/signUp"
 
+function Home(){
 
-class Home extends Component{
-
-    render(){
-        return(
+    return(
             <div className="flex h-screen w-screen">
                 <aside className="bg-blue-500 w-2/5 h-screen">
                     <h1 className="text-white text-center text-4xl mx-10 mt-16 mb-12 font-semibold">
@@ -26,22 +25,20 @@ class Home extends Component{
                     <h2 className="text-center w-52 mx-auto mt-4 text-4xl pb-2.5 bg-yellow-600 text-white">
                         propostas
                     </h2>
-                    <div className="flex mx-auto mt-20 flex-col">
+                    <div className="flex mx-auto mt-16 flex-col">
                         <Input placeholder={'Usuário'} className="" />
                         <Input placeholder={'Senha'} className="" />
                     </div>
+                    <Button content={'Entrar'} />
                     <h4 className="text-center text-2x1">
                         Ainda não é membro?
                     </h4>
-                    <h4 className="text-center text-yellow-600 font-bold text-2x1">
-                        <a>
+                    <h4 className="text-center text-yellow-600 font-bold text-2x1 cursor-pointer" onClick={SignUp()}>
                             Cadastre-se
-                        </a>
                     </h4>
                 </main>
             </div>
             
         )
-    }
 }
 export default Home
