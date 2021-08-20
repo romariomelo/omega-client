@@ -32,6 +32,12 @@ export function UseApiRequirements() {
     })
   }
 
+  async function toListSubmercado() {
+    return api.get("submercado")
+  }
+  async function toListFontedeEnergia() {
+    return api.get("fonteEnergia")
+  }
   async function createPropostas(data, token) {
     const {
       data_inicio,
@@ -64,5 +70,7 @@ export function UseApiRequirements() {
     createPropostas,
     updadePropostas,
     deleteProposta,
+    toListSubmercado,
+    toListFontedeEnergia,
   }
 }

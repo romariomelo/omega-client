@@ -5,7 +5,7 @@ import SignUp from "../functions/signUp"
 import useOmegaClienteContext from "../context/OmegaClientContext"
 
 function Home() {
-  const { handleLogin } = useOmegaClienteContext()
+  // const { handleLogin } = useOmegaClienteContext()
 
   return (
     <div className="flex h-screen w-screen">

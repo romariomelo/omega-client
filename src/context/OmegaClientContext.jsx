@@ -8,9 +8,11 @@ export default OmegaClientContext
 export function OmegaClientProvider({ children }) {
   const [loginToken, setLoginToken] = useState(""),
     [isToken, setIsToken] = useState(false),
-    [valueProposta, setValueProposta] = (useState(0)[
-      (listPospostas, setListPropostas)
-    ] = useState([]))
+    [valueProposta, setValueProposta] = useState(0),
+    [listPospostas, setListPropostas] = useState([]),
+    [listSubmercado, setListSubmercado] = useState([]),
+    [listFonteEnergia, setListFonteEnergia] = useState([]),
+    [inputPropostaForms, setInputPropostaForms] = useState({})
 
   const {
     login,
@@ -19,43 +21,52 @@ export function OmegaClientProvider({ children }) {
     createUser,
     createPropostas,
     updadePropostas,
+    toListFontedeEnergia,
+    toListSubmercado,
   } = UseApiRequirements()
 
-  handleLogin = async (email, password) => {
+  const handleLogin = async (email, password) => {
     const token = await login(email, password)
     setLoginToken(token)
     setIsToken(true)
   }
 
-  handleCreateUser = async (name, email, password) => {
+  const handleCreateUser = async (name, email, password) => {
     const user = await createUser(name, email, password)
     return { name: user.name, email: user.email }
   }
 
-  handlelistingPropostas = async () => {
+  const handlelistingPropostas = async () => {
     const propostas = await toListPropostas(loginToken)
     setListPropostas(propostas)
   }
 
-  handleDeleteProposta = async (public_id) => {
+  const handleDeleteProposta = async (public_id) => {
     await deleteProposta(public_id, loginToken)
     await handlelistingPropostas()
   }
 
-  handleCreateProposta = async (data) => {
+  const handleCreateProposta = async (data) => {
     const novaProposta = await createPropostas(data, loginToken)
     await handlelistingPropostas()
     return novaProposta.public_id
   }
 
-  handleUpdateProposta = async () => {
+  const handleUpdateProposta = async (public_id) => {
     await updadePropostas(public_id, loginToken)
     await handlelistingPropostas()
   }
 
-  handleLogout = () => {
+  const handleLogout = () => {
     setIsToken(false)
     setLoginToken("")
+  }
+
+  const handleRequestSubmercadoAndFonteEnergia = async () => {
+    const submercados = await toListSubmercado()
+    const fontesEnergia = await toListFontedeEnergia()
+    setListSubmercado(submercados)
+    setListFonteEnergia(fontesEnergia)
   }
 
   const context = {
