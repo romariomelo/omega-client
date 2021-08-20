@@ -1,6 +1,6 @@
 import Input from "../components/input"
 import SolarEnergyImage from "../assets/solar-energy-image.svg"
-import Button from "../components/button"
+import LargeButton from "../components/largeButton"
 import SignUp from "../functions/signUp"
 
 function Home(){
@@ -29,7 +29,7 @@ function Home(){
                         <Input placeholder={'Usuário'} className="" />
                         <Input placeholder={'Senha'} className="" />
                     </div>
-                    <Button content={'Entrar'} />
+                    <LargeButton content={'Entrar'} />
                     <h4 className="text-center text-2x1">
                         Ainda não é membro?
                     </h4>
