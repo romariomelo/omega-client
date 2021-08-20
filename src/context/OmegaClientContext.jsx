@@ -48,7 +48,6 @@ export function OmegaClientProvider({ children }) {
         name: target.value,
       })
     }
-    console.log(inputsLoginCreateUser)
   }
 
   const handleLogin = async () => {

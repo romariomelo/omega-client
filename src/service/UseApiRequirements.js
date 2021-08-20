@@ -4,7 +4,6 @@ export function UseApiRequirements() {
   const api = axios.create({
     baseURL: "http://localhost:3333/",
   })
-  return data
 
   async function login(email, password) {
     const { data } = await api.post("users/login", { email, password })
@@ -12,7 +11,8 @@ export function UseApiRequirements() {
   }
 
   async function createUser(name, email, password) {
-    return api.post("users", { name, email, password })
+    const { data } = api.post("users", { name, email, password })
+    return data
   }
 
   async function toListPropostas(token) {
@@ -23,24 +23,23 @@ export function UseApiRequirements() {
   }
 
   async function updadePropostas(public_id, token) {
-    const { data } = await api.patch(`propostas/${public_id}`, {
+    const { data } = api.patch(`propostas/${public_id}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
     return data
   }
 
   async function deleteProposta(public_id, token) {
-    const { data } = await api.delete(`propostas/${public_id}`, {
+    return api.delete(`propostas/${public_id}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
-    return data
   }
 
   async function toListSubmercado() {
-    const { data } = await api.get("submercado")
+    return api.get("submercado")
   }
   async function toListFontedeEnergia() {
-    const { data } = await api.get("fonteEnergia")
+    return api.get("fonteEnergia")
   }
   async function createPropostas(data, token) {
     const {
@@ -52,7 +51,7 @@ export function UseApiRequirements() {
       consumo_total,
       contratado,
     } = data
-    const { data } = await api.post(
+    return api.post(
       "proposta",
       {
         data_inicio,
@@ -65,7 +64,6 @@ export function UseApiRequirements() {
       },
       { headers: { Authorization: `Bearer ${token}` } }
     )
-    return data
   }
 
   return {
