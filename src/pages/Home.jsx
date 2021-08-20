@@ -1,9 +1,12 @@
-import { useOmegaClienteContext } from "../../context/OmegaClientContext"
-import Input from "../../components/input"
-import SolarEnergyImage from "../../assets/solar-energy-image.svg"
+import Input from "../components/input"
+import SolarEnergyImage from "../assets/solar-energy-image.svg"
+import LargeButton from "../components/largeButton"
+import SignUp from "../functions/signUp"
+import useOmegaClienteContext from "../context/OmegaClientContext"
 
 function Home() {
   const { handleLogin } = useOmegaClienteContext()
+
   return (
     <div className="flex h-screen w-screen">
       <aside className="bg-blue-500 w-2/5 h-screen">
@@ -20,13 +23,17 @@ function Home() {
         <h2 className="text-center w-52 mx-auto mt-4 text-4xl pb-2.5 bg-yellow-600 text-white">
           propostas
         </h2>
-        <div className="flex mx-auto mt-20 flex-col">
+        <div className="flex mx-auto mt-16 flex-col">
           <Input placeholder={"Usuário"} className="" />
           <Input placeholder={"Senha"} className="" />
         </div>
+        <LargeButton content={"Entrar"} />
         <h4 className="text-center text-2x1">Ainda não é membro?</h4>
-        <h4 className="text-center text-yellow-600 font-bold text-2x1">
-          <a>Cadastre-se</a>
+        <h4
+          className="text-center text-yellow-600 font-bold text-2x1 cursor-pointer"
+          onClick={SignUp()}
+        >
+          Cadastre-se
         </h4>
       </main>
     </div>
