@@ -55,7 +55,6 @@ export function UseApiRequirements() {
       fonte_energia,
       submercado,
       cargas,
-      consumo_total,
       contratado,
     } = dados
     const { data } = await api.post(
@@ -66,7 +65,6 @@ export function UseApiRequirements() {
         fonte_energia,
         submercado,
         cargas,
-        consumo_total,
         contratado,
       },
       { headers: { Authorization: `Bearer ${token}` } }
