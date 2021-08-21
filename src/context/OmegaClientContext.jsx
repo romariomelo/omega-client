@@ -87,11 +87,15 @@ export function OmegaClientProvider({ children }) {
   }
 
   const handleLogin = async () => {
-    const { email, password } = inputs
-    const token = await login(email, password)
-    setLoginToken(token)
-    setIsToken(true)
-    history.push('/propostas')
+    try {
+      const { email, password } = inputs
+      const token = await login(email, password)
+      setLoginToken(token)
+      setIsToken(true)
+      history.push('/propostas')
+    } catch (err) {
+      alert('E-mail e/ou senha inválida')
+    }
   }
 
   const handleCreateUser = async () => {
