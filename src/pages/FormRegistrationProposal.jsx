@@ -63,6 +63,7 @@ function FormRegistrationProposal() {
     setValor(Math.round(valor).toFixed(2))
   }
   useEffect(() => {
+    validateInputsValue()
     calculaValorTotal(
       consumoTotal,
       periodo_horas,
@@ -70,6 +71,7 @@ function FormRegistrationProposal() {
       inputs.fonteEnergia
     )
   }, [inputs, consumoTotal, periodo_horas])
+
   return (
     <div className="overflow-x-hidden mb-10">
       <Header />

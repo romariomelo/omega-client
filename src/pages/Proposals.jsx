@@ -4,6 +4,7 @@ import Header from '../components/header';
 import { useOmegaClienteContext } from '../context/OmegaClientContext';
 import React, { useCallback, useEffect } from 'react';
 import { useHistory } from 'react-router';
+import {Link} from 'react-router-dom'
 
 function Proposals() {
   const history = useHistory();
@@ -33,10 +34,12 @@ function Proposals() {
       {listPospostas.map((proposta) => (
         <ProposalBox proposta={proposta} />
       ))}
+      <Link to="/criar-proposta">
       <LargeButton
         content="Criar nova proposta"
         fixed="fixed bottom-2 right-16"
       />
+      </Link>
     </div>
   );
 }

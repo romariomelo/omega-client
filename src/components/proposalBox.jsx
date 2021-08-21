@@ -29,7 +29,8 @@ function ProposalBox(props){
             <ProposalElement content={`ID: ${proposta.public_id}`} />
             <div className="justify-self-end flex">
             <SmallButton content={'Contratar'} bgColor={'bg-green-600'} />
-            <SmallButton content={'Deletar'} bgColor={'bg-red-600'} />
+            {(!proposta.contratado) ?
+            <SmallButton content={'Deletar'} bgColor={'bg-red-600'} /> : null}
             </div>
         </div>
     )
