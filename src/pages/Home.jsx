@@ -1,5 +1,6 @@
 import Input from "../components/input"
 import SolarEnergyImage from "../assets/solar-energy-image.svg"
+import OmegaLogo from "../assets/omega-logo.svg"
 import LargeButton from "../components/largeButton"
 import { useOmegaClienteContext } from "../context/OmegaClientContext"
 
@@ -22,8 +23,16 @@ function Home() {
           propostas
         </h2>
         <div className="flex mx-auto mt-16 flex-col">
-          <Input placeholder={"Email"} className="width={'w-80'}" />
-          <Input placeholder={"Senha"} className="width={'w-80'}" />
+          <Input
+            placeholder={"Email"}
+            className="width={'w-80'}"
+            name={"email"}
+          />
+          <Input
+            placeholder={"Senha"}
+            className="width={'w-80'}"
+            name={"password"}
+          />
         </div>
         <LargeButton content={"Entrar"} funcOnclick={handleLogin} />
         <h4 className="text-center text-2x1">Ainda não é membro?</h4>
@@ -41,9 +50,9 @@ function Home() {
 
         <form>
           <div className="flex flex-col">
-            <Input placeholder={"Nome de Uusário"} />
-            <Input placeholder={"Email"} />
-            <Input placeholder={"Senha"} />
+            <Input placeholder={"Nome de Uusário"} name={"name"} />
+            <Input placeholder={"Email"} name={"email"} />
+            <Input placeholder={"Senha"} name={"password"} />
             <br />
             <button className="mb-4 bg-yellow-600 p-2 mx-auto text-center border border-black">
               Cadastrar-se

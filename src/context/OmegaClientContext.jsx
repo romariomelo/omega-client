@@ -12,10 +12,11 @@ export function OmegaClientProvider({ children }) {
     [listPospostas, setListPropostas] = useState([]),
     [listSubmercado, setListSubmercado] = useState([]),
     [listFonteEnergia, setListFonteEnergia] = useState([]),
-    [inputsLoginCreateUser, setInputsLoginCreateUser] = useState({
+    [inputs, setInputs] = useState({
       email: "",
       password: "",
       name: "",
+      cargas: [],
     })
 
   const {
@@ -29,29 +30,15 @@ export function OmegaClientProvider({ children }) {
     toListSubmercado,
   } = UseApiRequirements()
 
-  const handleInputLoginAndCreateUser = (placeholder, { target }) => {
-    if (placeholder === "Email") {
-      setInputsLoginCreateUser({
-        ...inputsLoginCreateUser,
-        email: target.value,
-      })
-    }
-    if (placeholder === "Senha") {
-      setInputsLoginCreateUser({
-        ...inputsLoginCreateUser,
-        password: target.value,
-      })
-    }
-    if (placeholder === "Nome do usuário") {
-      setInputsLoginCreateUser({
-        ...inputsLoginCreateUser,
-        name: target.value,
-      })
-    }
+  const handleInputLoginAndCreateUser = (input, { target }) => {
+    setInputs({
+      ...inputs,
+      [input]: target.value,
+    })
   }
 
   const handleLogin = async () => {
-    const { email, password } = inputsLoginCreateUser
+    const { email, password } = inputs
     const token = await login(email, password)
     setLoginToken(token)
     setIsToken(true)
