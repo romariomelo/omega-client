@@ -4,7 +4,7 @@ import { useOmegaClienteContext } from '../../../context/OmegaClientContext';
 import LargeButton from '../../../components/largeButton';
 
 const CreateUserModal = ({ setModalOpened }) => {
-  const { handleCreateUser, handleInputLoginAndCreateUser } =
+  const { handleCreateUser, handleInput } =
     useOmegaClienteContext();
 
   const [name, setName] = React.useState('');
@@ -67,7 +67,7 @@ const CreateUserModal = ({ setModalOpened }) => {
             name="name"
             onChange={(e) => {
               setName(e.target.value);
-              handleInputLoginAndCreateUser('name', e);
+              handleInput('name', 'name', e);
             }}
           />
           <br />
@@ -77,7 +77,7 @@ const CreateUserModal = ({ setModalOpened }) => {
             name="email"
             onChange={(e) => {
               setEmail(e.target.value);
-              handleInputLoginAndCreateUser('email', e);
+              handleInput('email', 'email', e);
             }}
           />
           <br />
@@ -88,7 +88,7 @@ const CreateUserModal = ({ setModalOpened }) => {
             type="password"
             onChange={(e) => {
               setPassword(e.target.value);
-              handleInputLoginAndCreateUser('password', e);
+              handleInput('password', 'password', e);
             }}
           />
           {/* <Input placeholder={'Nome de Usuário'} name={'name'} /> */}

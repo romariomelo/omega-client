@@ -5,7 +5,7 @@ import { useOmegaClienteContext } from '../context/OmegaClientContext';
 import CreateUserModal from './Home/Components/CreateUserModal';
 
 function Home() {
-  const { handleLogin, handleInputLoginAndCreateUser } =
+  const { handleLogin, handleInput } =
     useOmegaClienteContext();
 
   const [email, setEmail] = React.useState('');
@@ -54,7 +54,7 @@ function Home() {
             name="email"
             onChange={(e) => {
               setEmail(e.target.value);
-              handleInputLoginAndCreateUser('email', e);
+              handleInput('email', 'email', e);
             }}
           />
           <input
@@ -64,7 +64,7 @@ function Home() {
             type="password"
             onChange={(e) => {
               setPassword(e.target.value);
-              handleInputLoginAndCreateUser('password', e);
+              handleInput('password', 'password', e);
             }}
           />
         </div>
