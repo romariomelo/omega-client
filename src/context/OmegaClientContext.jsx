@@ -93,9 +93,9 @@ export function OmegaClientProvider({ children }) {
       const token = await login(email, password)
       setLoginToken(token)
       setIsToken(true)
-      history.push('/propostas')
+      history.push("/propostas")
     } catch (err) {
-      alert('E-mail e/ou senha inválida')
+      alert("E-mail e/ou senha inválida")
     }
   }
 
@@ -121,13 +121,28 @@ export function OmegaClientProvider({ children }) {
     const dados = {
       data_inicio: inputs.data_inicio,
       data_fim: inputs.data_fim,
-      fonte_energia: inputs.fonteEnergia,
-      submercado: inputs.submercado,
+      fonte_energia: inputs.fonteEnergia.descricao,
+      submercado: inputs.submercado.descricao,
       cargas: inputs.cargas,
       contratado: inputs.contratado,
     }
     const novaProposta = await createPropostas(dados, loginToken)
     await handlelistingPropostas()
+    setInputs({
+      ...inputs,
+      ["cargas"]: [],
+      ["fonteEnergia"]: {
+        ["descricao"]: "",
+        ["valor"]: 0,
+      },
+      ["submercado"]: {
+        ["descricao"]: "",
+        ["valor"]: 0,
+      },
+      ["data_inicio"]: "",
+      ["data_fim"]: "",
+      ["contratado"]: false,
+    })
     return novaProposta.public_id
   }
 
