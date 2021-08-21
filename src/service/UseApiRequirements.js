@@ -15,6 +15,13 @@ export function UseApiRequirements() {
     return data
   }
 
+  async function getUser(token) {
+    const { data } = await api.get(`/users/${token}/verify`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    return data
+  }
+
   async function toListPropostas(token) {
     const { data } = await api.get("proposta", {
       headers: { Authorization: `Bearer ${token}` },
@@ -75,6 +82,7 @@ export function UseApiRequirements() {
   return {
     login,
     createUser,
+    getUser,
     toListPropostas,
     createPropostas,
     updadePropostas,
