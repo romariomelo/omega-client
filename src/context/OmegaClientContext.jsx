@@ -148,6 +148,7 @@ export function OmegaClientProvider({ children }) {
       ["data_fim"]: "",
       ["contratado"]: false,
     })
+    history.push("/propostas")
     return novaProposta.public_id
   }
 
@@ -171,6 +172,7 @@ export function OmegaClientProvider({ children }) {
   }
 
   const context = {
+    handleDeleteProposta,
     handleLogin,
     handleCreateUser,
     handlelistingPropostas,
