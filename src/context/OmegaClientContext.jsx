@@ -43,6 +43,7 @@ export function OmegaClientProvider({ children }) {
     getUser,
     toListPropostas,
     deleteProposta,
+    contrataProposta,
     createUser,
     createPropostas,
     updadePropostas,
@@ -157,6 +158,11 @@ export function OmegaClientProvider({ children }) {
     await handlelistingPropostas()
   }
 
+  const handleContrataProposta = async (public_id) => {
+    await contrataProposta(public_id, loginToken)
+    await handlelistingPropostas()
+  }
+
   const handleLogout = () => {
     setIsToken(false)
     setLoginToken("")
@@ -179,6 +185,7 @@ export function OmegaClientProvider({ children }) {
     usuario,
     listPospostas,
     handleCreateProposta,
+    handleContrataProposta,
     isToken,
     handleLogout,
     handleInput,

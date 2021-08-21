@@ -30,14 +30,20 @@ export function UseApiRequirements() {
   }
 
   async function updadePropostas(public_id, token) {
-    const { data } = await api.patch(`propostas/${public_id}`, {
+    const { data } = await api.patch(`proposta/${public_id}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
     return data
   }
 
   async function deleteProposta(public_id, token) {
-    return api.delete(`propostas/${public_id}`, {
+    return api.delete(`proposta/${public_id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+  }
+
+  async function contrataProposta(public_id, token) {
+    return api.patch(`proposta/${public_id}/contratar`, {}, {
       headers: { Authorization: `Bearer ${token}` },
     })
   }
@@ -87,6 +93,7 @@ export function UseApiRequirements() {
     createPropostas,
     updadePropostas,
     deleteProposta,
+    contrataProposta,
     toListSubmercado,
     toListFontedeEnergia,
     toListCargas,

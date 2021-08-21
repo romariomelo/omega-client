@@ -1,30 +1,30 @@
-import SmallButton from "./smallButton"
-import ProposalElement from "./proposalElement"
-import { format, parseISO } from "date-fns"
-import ptBR from "date-fns/locale/pt-BR"
-import { useOmegaClienteContext } from "../context/OmegaClientContext"
+import SmallButton from './smallButton';
+import ProposalElement from './proposalElement';
+import { format, parseISO } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
+import { useOmegaClienteContext } from '../context/OmegaClientContext';
 
 function ProposalBox(props) {
-  const { handleDeleteProposta } = useOmegaClienteContext()
+  const { handleDeleteProposta, handleContrataProposta } = useOmegaClienteContext();
   const toReal = (valor) => {
-    return Number(valor).toLocaleString("pt-BR", {
+    return Number(valor).toLocaleString('pt-BR', {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
-    })
-  }
+    });
+  };
 
   const formatData = (data) => {
-    return format(parseISO(data), "d MMM yy", { locale: ptBR })
-  }
+    return format(parseISO(data), 'd MMM yy', { locale: ptBR });
+  };
 
-  const { proposta } = props
+  const { proposta } = props;
 
   return (
     <div className="flex flex-wrap mx-12 my-10 justify-between border-2 border-blue-900">
       <ProposalElement
         content={`Início: ${formatData(proposta.data_inicio)}`}
       />
-      <ProposalElement content={`Fim: ${formatData(proposta.data_inicio)}`} />
+      <ProposalElement content={`Fim: ${formatData(proposta.data_fim)}`} />
       <ProposalElement
         content={`Consumo Total: ${proposta.consumo_total} kWh`}
       />
@@ -36,18 +36,29 @@ function ProposalBox(props) {
         content={`Valor: R$ ${toReal(proposta.valor_proposta)}`}
       />
       <ProposalElement content={`ID: ${proposta.public_id}`} />
+
+      <ProposalElement
+        content={`Contratada: ${proposta.contratado ? 'SIM' : 'NÃO'}`}
+      />
       <div className="justify-self-end flex">
-        <SmallButton content={"Contratar"} bgColor={"bg-green-600"} />
         {!proposta.contratado ? (
-          <SmallButton
-            public_id={proposta.public_id}
-            content={"Deletar"}
-            bgColor={"bg-red-600"}
-            functionOnclick={handleDeleteProposta}
-          />
+          <>
+            <SmallButton
+                public_id={proposta.public_id}
+                content={'Contratar'}
+                bgColor={'bg-green-600'}
+                functionOnclick={handleContrataProposta}
+            />
+            <SmallButton
+              public_id={proposta.public_id}
+              content={'Deletar'}
+              bgColor={'bg-red-600'}
+              functionOnclick={handleDeleteProposta}
+            />
+          </>
         ) : null}
       </div>
     </div>
-  )
+  );
 }
-export default ProposalBox
+export default ProposalBox;
