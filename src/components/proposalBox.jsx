@@ -14,13 +14,16 @@ function ProposalBox(props) {
   };
 
   const formatData = (data) => {
-    return format(parseISO(data), 'd MMM yy', { locale: ptBR });
+    console.log(data)
+    // return format(parseISO(data), 'd MMM yy', { locale: ptBR,  });
+    const dt = new Date(data);
+    return dt.toLocaleString('pt-BR', {timeZone: 'UTC'}).replace(' 00:00:00', '')
   };
 
   const { proposta } = props;
 
   return (
-    <div className="flex flex-wrap mx-12 my-10 justify-between border-2 border-blue-900">
+    <div className={`flex flex-wrap mx-12 my-10 justify-between border-2 ${proposta.contratado ? 'border-green-900' : 'border-blue-900'}`}>
       <ProposalElement
         content={`Início: ${formatData(proposta.data_inicio)}`}
       />

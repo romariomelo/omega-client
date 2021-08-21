@@ -166,6 +166,7 @@ export function OmegaClientProvider({ children }) {
   const handleLogout = () => {
     setIsToken(false)
     setLoginToken("")
+    history.push('/')
   }
 
   const handleRequestSubmercadoFonteEnergiaCargas = async () => {

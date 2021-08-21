@@ -4,7 +4,7 @@ import PersonSilhouette from '../assets/person-silhouette.svg';
 import { useOmegaClienteContext } from '../context/OmegaClientContext';
 
 function Header() {
-  const { usuario } = useOmegaClienteContext();
+  const { usuario, handleLogout } = useOmegaClienteContext();
   return (
     <>
       <div className="flex flex-nowrap justify-between">
@@ -17,9 +17,12 @@ function Header() {
             className="bg-yellow-600 my-auto p-2 w-12 h-12"
             alt="Icon"
           />
+          
           <p className="mr-10 border-2 border-yellow-500 border-l-0 h-12 my-auto px-2 py-2">
-            {usuario.name}
+            {usuario && usuario.name}
           </p>
+          <p className="mr-10 border-2 border-yellow-500 h-12 my-auto px-2 py-2" style={{cursor: 'pointer'}}
+            onClick={handleLogout}>Logout</p>
         </div>
       </div>
     </>
