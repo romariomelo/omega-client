@@ -27,10 +27,13 @@ function ProposalBox(props){
             <ProposalElement content={`Submercado: ${proposta.submercado.descricao}`} />
             <ProposalElement content={`Valor: R$ ${toReal(proposta.valor_proposta)}`} />
             <ProposalElement content={`ID: ${proposta.public_id}`} />
+            <ProposalElement content={`Contratada: ${proposta.contratado ? 'SIM' : 'NÃO'}`} />
             <div className="justify-self-end flex">
-            <SmallButton content={'Contratar'} bgColor={'bg-green-600'} />
             {(!proposta.contratado) ?
-            <SmallButton content={'Deletar'} bgColor={'bg-red-600'} /> : null}
+            <>
+            <SmallButton content={'Contratar'} bgColor={'bg-green-600'} />
+            <SmallButton content={'Deletar'} bgColor={'bg-red-600'} />
+            </> : null}
             </div>
         </div>
     )
