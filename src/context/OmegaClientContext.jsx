@@ -1,13 +1,13 @@
 import { createContext, useContext, useState, useEffect } from "react"
 import { UseApiRequirements } from "../service/UseApiRequirements"
-import {useHistory} from 'react-router-dom'
+import { useHistory } from "react-router-dom"
 
 const OmegaClientContext = createContext()
 
 export default OmegaClientContext
 
 export function OmegaClientProvider({ children }) {
-  const history = useHistory();
+  const history = useHistory()
   const [loginToken, setLoginToken] = useState(""),
     [isToken, setIsToken] = useState(false),
     [valueProposta, setValueProposta] = useState(0),
@@ -30,6 +30,7 @@ export function OmegaClientProvider({ children }) {
       },
       data_inicio: "",
       data_fim: "",
+      contratado: false,
     })
   useEffect(() => {
     handleRequestSubmercadoFonteEnergiaCargas()
@@ -91,15 +92,15 @@ export function OmegaClientProvider({ children }) {
     const token = await login(email, password)
     setLoginToken(token)
     setIsToken(true)
-    history.push('/propostas')
+    history.push("/propostas")
   }
 
   const handleCreateUser = async () => {
-    const {name, email, password} = inputs
-    const {access_token} = await createUser(name, email, password)
+    const { name, email, password } = inputs
+    const { access_token } = await createUser(name, email, password)
     setLoginToken(access_token)
     setIsToken(true)
-    history.push('/propostas')
+    history.push("/propostas")
   }
 
   const handlelistingPropostas = async () => {
@@ -112,8 +113,16 @@ export function OmegaClientProvider({ children }) {
     await handlelistingPropostas()
   }
 
-  const handleCreateProposta = async (data) => {
-    const novaProposta = await createPropostas(data, loginToken)
+  const handleCreateProposta = async () => {
+    const dados = {
+      data_inicio: inputs.data_inicio,
+      data_fim: inputs.data_fim,
+      fonte_energia: inputs.fonteEnergia,
+      submercado: inputs.submercado,
+      cargas: inputs.cargas,
+      contratado: inputs.contratado,
+    }
+    const novaProposta = await createPropostas(dados, loginToken)
     await handlelistingPropostas()
     return novaProposta.public_id
   }

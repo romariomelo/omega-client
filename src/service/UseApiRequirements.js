@@ -66,7 +66,6 @@ export function UseApiRequirements() {
         fonte_energia,
         submercado,
         cargas,
-        consumo_total,
         contratado,
       },
       { headers: { Authorization: `Bearer ${token}` } }
