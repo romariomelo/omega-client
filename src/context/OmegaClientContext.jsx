@@ -15,6 +15,7 @@ export function OmegaClientProvider({ children }) {
     [listSubmercado, setListSubmercado] = useState([]),
     [listFonteEnergia, setListFonteEnergia] = useState([]),
     [listCargas, setListCargas] = useState([]),
+    [usuario, setUsuario] = useState(null),
     [inputs, setInputs] = useState({
       email: "",
       password: "",
@@ -39,6 +40,7 @@ export function OmegaClientProvider({ children }) {
   const {
     toListCargas,
     login,
+    getUser,
     toListPropostas,
     deleteProposta,
     createUser,
@@ -93,6 +95,8 @@ export function OmegaClientProvider({ children }) {
       const token = await login(email, password)
       setLoginToken(token)
       setIsToken(true)
+      const usuario = await getUser(token)
+      setUsuario(usuario)
       history.push('/propostas')
     } catch (err) {
       alert('E-mail e/ou senha inválida')
@@ -101,9 +105,10 @@ export function OmegaClientProvider({ children }) {
 
   const handleCreateUser = async () => {
     const { name, email, password } = inputs
-    const { access_token } = await createUser(name, email, password)
+    const { access_token, user } = await createUser(name, email, password)
     setLoginToken(access_token)
     setIsToken(true)
+    setUsuario(user);
     history.push("/propostas")
   }
 
@@ -154,6 +159,7 @@ export function OmegaClientProvider({ children }) {
     handleLogin,
     handleCreateUser,
     handlelistingPropostas,
+    usuario,
     listPospostas,
     handleCreateProposta,
     isToken,
