@@ -4,7 +4,7 @@ import Header from '../components/header'
 
 function Proposals(){
     return(
-        <>
+        <div className="overflow-x-hidden">
         <Header />
         <h2 className="ml-16 mt-10 text-3xl">
         Lista das suas propostas:
@@ -12,7 +12,7 @@ function Proposals(){
         <ProposalBox />
         <ProposalBox />
         <LargeButton content="Criar nova proposta" fixed="fixed bottom-2 right-16" />
-        </>
+        </div>
     )
 }
 export default Proposals
