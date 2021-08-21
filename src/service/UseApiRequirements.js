@@ -11,7 +11,7 @@ export function UseApiRequirements() {
   }
 
   async function createUser(name, email, password) {
-    const { data } = api.post("users", { name, email, password })
+    const { data } = await api.post("users", { name, email, password })
     return data
   }
 
@@ -23,7 +23,7 @@ export function UseApiRequirements() {
   }
 
   async function updadePropostas(public_id, token) {
-    const { data } = api.patch(`propostas/${public_id}`, {
+    const { data } = await api.patch(`propostas/${public_id}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
     return data
@@ -35,13 +35,20 @@ export function UseApiRequirements() {
     })
   }
 
+  async function toListCargas() {
+    const { data } = await api.get("carga")
+    return data
+  }
+
   async function toListSubmercado() {
-    return api.get("submercado")
+    const { data } = await api.get("submercado")
+    return data
   }
   async function toListFontedeEnergia() {
-    return api.get("fonteEnergia")
+    const { data } = await api.get("fonteEnergia")
+    return data
   }
-  async function createPropostas(data, token) {
+  async function createPropostas(dados, token) {
     const {
       data_inicio,
       data_fim,
@@ -50,8 +57,8 @@ export function UseApiRequirements() {
       cargas,
       consumo_total,
       contratado,
-    } = data
-    return api.post(
+    } = dados
+    const { data } = await api.post(
       "proposta",
       {
         data_inicio,
@@ -64,6 +71,7 @@ export function UseApiRequirements() {
       },
       { headers: { Authorization: `Bearer ${token}` } }
     )
+    return data
   }
 
   return {
@@ -75,5 +83,6 @@ export function UseApiRequirements() {
     deleteProposta,
     toListSubmercado,
     toListFontedeEnergia,
+    toListCargas,
   }
 }
