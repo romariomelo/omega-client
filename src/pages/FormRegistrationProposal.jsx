@@ -169,7 +169,7 @@ function FormRegistrationProposal() {
               </div>
             </div>
             <div>
-              <h1 className="text-2xl">Valor da Proposta</h1>
+              <h1 className="text-2xl">Valor da Proposta Estimado</h1>
               <br />
               <br />
               <div className="text-2xl text-center bg-gray-100 py-2 border border-blue-900">
