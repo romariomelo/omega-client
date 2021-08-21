@@ -9,9 +9,7 @@ function Input(props) {
       type={props.type}
       name={props.name}
       placeholder={props.placeholder}
-      onChange={(event) =>
-        handleInputLoginAndCreateUser(props.placeholder, event)
-      }
+      onChange={(event) => handleInputLoginAndCreateUser(props.name, event)}
     />
   )
 }
