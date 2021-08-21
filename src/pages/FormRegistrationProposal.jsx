@@ -3,8 +3,6 @@ import { useOmegaClienteContext } from "../context/OmegaClientContext"
 import LargeButton from "../components/largeButton"
 import Divider from "../components/divider"
 import Header from "../components/header"
-import Input from "../components/input"
-import Label from "../components/label"
 
 function FormRegistrationProposal() {
   const {
@@ -83,6 +81,7 @@ function FormRegistrationProposal() {
               <p>Data de inicio</p>
               <input
                 type="date"
+                value={inputs.data_inicio}
                 onChange={(event) => handleInput("data_inicio", "date", event)}
               />
             </div>
@@ -90,6 +89,7 @@ function FormRegistrationProposal() {
               <p>Data de fim</p>
               <input
                 type="date"
+                value={inputs.data_fim}
                 onChange={(event) => handleInput("data_fim", "date", event)}
               />
             </div>
