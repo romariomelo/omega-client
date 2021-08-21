@@ -6,7 +6,7 @@ import SmallButton from "../components/smallButton"
 
 function Form() {
   return (
-    <>
+    <div className="overflow-x-hidden mb-10">
       <Header />
       <h1 className="text-center text-3xl my-6">Crie sua proposta</h1>
       <div className="w-3/4 border border-blue-900 mx-auto p-8">
@@ -19,7 +19,7 @@ function Form() {
                 width={"w-48"}
                 placeholder={"Ex: 21/08/2021"}
                 type={"date"}
-                name={dataInicio}
+                //name={dataInicio}
               />
             </div>
             <div>
@@ -29,7 +29,7 @@ function Form() {
                 width={"w-48"}
                 placeholder={"Ex: 22/08/2021"}
                 type={"date"}
-                name={dataFim}
+                //name={dataFim}
               />
             </div>
           </div>
@@ -128,7 +128,7 @@ function Form() {
           </button>
         </form>
       </div>
-    </>
+    </div>
   )
 }
 export default Form

@@ -1,11 +1,13 @@
 import { createContext, useContext, useState, useEffect } from "react"
 import { UseApiRequirements } from "../service/UseApiRequirements"
+import {useHistory} from 'react-router-dom'
 
 const OmegaClientContext = createContext()
 
 export default OmegaClientContext
 
 export function OmegaClientProvider({ children }) {
+  const history = useHistory();
   const [loginToken, setLoginToken] = useState(""),
     [isToken, setIsToken] = useState(false),
     [valueProposta, setValueProposta] = useState(0),
@@ -89,11 +91,15 @@ export function OmegaClientProvider({ children }) {
     const token = await login(email, password)
     setLoginToken(token)
     setIsToken(true)
+    history.push('/propostas')
   }
 
-  const handleCreateUser = async (name, email, password) => {
-    const user = await createUser(name, email, password)
-    return { name: user.name, email: user.email }
+  const handleCreateUser = async () => {
+    const {name, email, password} = inputs
+    const {access_token} = await createUser(name, email, password)
+    setLoginToken(access_token)
+    setIsToken(true)
+    history.push('/propostas')
   }
 
   const handlelistingPropostas = async () => {
