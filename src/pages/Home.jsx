@@ -32,8 +32,8 @@ function Home() {
     validateInputsValue();
   }, [email, password, validateInputsValue]);
   return (
-    <div className="flex h-screen w-screen">
-      <div className="bg-blue-500 w-2/5 h-full min-h-full">
+    <div className="flex h-screen w-screen min-h-screen">
+      <div className="bg-blue-500 w-2/5 h-full min-h-screen">
         <h1 className="text-white text-center text-4xl mx-10 mt-16 mb-12 font-semibold">
           Gerencie suas propostas de um jeito simplês e fácil
         </h1>
@@ -42,7 +42,7 @@ function Home() {
           Deixa que a Omega simplifica sua vida
         </h3>
       </div>
-      <main className="h-screen w-3/5">
+      <div className="h-screen w-3/5">
         <h1 className="text-center text-5xl text-blue-900 mt-24">Omega</h1>
         <h2 className="text-center w-52 mx-auto mt-4 text-4xl pb-2.5 bg-yellow-600 text-white">
           propostas
@@ -80,13 +80,12 @@ function Home() {
         >
           Cadastre-se
         </h4>
-      </main>
+      </div>
 
-      {/* MODAL */}
+
       {modalOpened ? (
         <CreateUserModal setModalOpened={setModalOpened} />
       ) : null}
-      {/* /MODAL */}
     </div>
   );
 }

@@ -11,7 +11,7 @@ export function UseApiRequirements() {
   }
 
   async function createUser(name, email, password) {
-    const { data } = api.post("users", { name, email, password })
+    const { data } = await api.post("users", { name, email, password })
     return data
   }
 

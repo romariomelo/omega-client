@@ -1,5 +1,4 @@
 import React from 'react';
-import Input from '../../../components/input';
 import OmegaLogo from '../../../assets/omega-logo.svg';
 import { useOmegaClienteContext } from '../../../context/OmegaClientContext';
 import LargeButton from '../../../components/largeButton';
@@ -86,6 +85,7 @@ const CreateUserModal = ({ setModalOpened }) => {
             placeholder="Senha"
             className="`m-5 p-3 border-black border-2 self-center `width={'w-80'}"
             name="password"
+            type="password"
             onChange={(e) => {
               setPassword(e.target.value);
               handleInputLoginAndCreateUser('password', e);
