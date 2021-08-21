@@ -81,6 +81,7 @@ function FormRegistrationProposal() {
               <p>Data de inicio</p>
               <input
                 type="date"
+                min='2021-08-22'
                 value={inputs.data_inicio}
                 onChange={(event) => handleInput("data_inicio", "date", event)}
               />
@@ -99,6 +100,7 @@ function FormRegistrationProposal() {
             <div>
               <p>Fonte de Energia</p>
               {listFonteEnergia.map((fonteEnergia) => (
+                <>
                 <label
                   htmlFor={fonteEnergia.descricao}
                   key={fonteEnergia.descricao}
@@ -113,7 +115,7 @@ function FormRegistrationProposal() {
                       handleInput("fonteEnergia", fonteEnergia.descricao, event)
                     }
                   />
-                </label>
+                </label><br /></>
               ))}
             </div>
           </div>
@@ -122,6 +124,7 @@ function FormRegistrationProposal() {
             <div>
               <p>Submercado</p>
               {listSubmercado.map((submercado) => (
+                <>
                 <label
                   htmlFor={submercado.descricao}
                   key={submercado.descricao}
@@ -136,7 +139,7 @@ function FormRegistrationProposal() {
                       handleInput("submercado", submercado.descricao, event)
                     }
                   />
-                </label>
+                </label>< br /></>
               ))}
             </div>
           </div>
@@ -145,8 +148,9 @@ function FormRegistrationProposal() {
             <div>
               <p>Cargas</p>
               {listCargas.map((carga) => (
+                <>
                 <label htmlFor={carga.nome_empresa} key={carga.nome_empresa}>
-                  {carga.nome_empresa}
+                  {`${carga.nome_empresa} (${carga.consumo} kWh) `}
                   <input
                     type="checkbox"
                     name={carga.nome_empresa}
@@ -156,7 +160,7 @@ function FormRegistrationProposal() {
                       handleInput("carga", carga.nome_empresa, event)
                     }
                   />
-                </label>
+                </label><br /></>
               ))}
             </div>
           </div>
